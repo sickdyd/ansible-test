@@ -1,0 +1,16 @@
+---
+- name: Ensure the system is updated and upgraded
+  become: true
+  tasks:
+    - name: Update the package list (apt update)
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages (apt upgrade)
+      apt:
+        upgrade: dist # 'safe' for regular upgrades, or 'dist' for full upgrades
+        cache_valid_time: 3600 # Update cache if older than an hour
+
+    - name: Remove unnecessary packages (apt autoremove)
+      apt:
+        autoremove: yes
