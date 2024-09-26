@@ -1,0 +1,6 @@
+---
+- name: Include default playbook
+  import_playbook: playbooks/default.yml
+
+- name: Include base playbook
+  import_playbook: playbooks/base.yml

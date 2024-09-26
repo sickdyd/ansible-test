@@ -1,0 +1,34 @@
+---
+- name: base module
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Update the package list
+      apt:
+        update_cache: yes
+
+    - name: Install build-essential, zip, and unzip
+      apt:
+        name:
+          - build-essential
+          - zip
+          - unzip
+        state: present
+        update_cache: yes
+        force_apt_get: yes
+
+    - name: Install sysstat and ffmpeg
+      apt:
+        name:
+          - sysstat
+          - ffmpeg
+        state: present
+        update_cache: yes
+        force_apt_get: yes
+
+    - name: Enable sysstat by editing /etc/default/sysstat
+      lineinfile:
+        path: /etc/default/sysstat
+        regexp: 'ENABLED="false"'
+        line: 'ENABLED="true"'
+        state: present

@@ -1,5 +1,6 @@
 ---
 - name: Ensure the system is updated and upgraded
+  hosts: localhost
   become: true
   tasks:
     - name: Update the package list (apt update)
