@@ -1,6 +1,6 @@
 ---
 - name: base module
-  hosts: localhost
+  hosts: all
   become: true
   tasks:
     - name: Update the package list
